@@ -1,0 +1,93 @@
+<a>
+  <h4>Add New Company</h4>
+  <table width="470px" class="companies">
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>PASSWORD</th>
+    </tr>
+
+    <tr>
+      <td align="center"><input type="number" min="1" max="9999" [(ngModel)]="newCompany.id" placeholder="Enter ID">
+      </td>
+      <td align="center"><input size="10" [(ngModel)]="newCompany.compName" placeholder="Enter Name"></td>
+      <td align="center"><input type="email" size="20" [(ngModel)]="newCompany.email" placeholder="Enter Email"></td>
+      <td align="center"><input size="15" type="password" [(ngModel)]="newCompany.password"
+                                placeholder="Enter Password"></td>
+      <td align="center" class="delete-button" (click)="addCompany($event)">Create</td>
+    </tr>
+  </table>
+
+  <div id="search-component">
+    <h4>Search Company</h4>
+    <input #searchBox id="search-box" (keyup)="searchByName(searchBox.value)" placeholder="Search By Name"/>
+    <input #searchBox1 id="search-box1" (keyup)="searchByID(searchBox1.value)" placeholder="Search By ID"/>
+    <div>
+      <table width="470px" class="companies">
+        <tr>
+          <th *ngIf="searchBox.value || searchBox1.value">ID</th>
+          <th *ngIf="searchBox.value || searchBox1.value">NAME</th>
+          <th *ngIf="searchBox.value || searchBox1.value">EMAIL</th>
+          <th *ngIf="searchBox.value || searchBox1.value">PASSWORD</th>
+        </tr>
+
+        <tr *ngFor="let comp of searchCompanies || companyByID" (click)="onSelect(comp)" [class.selected]="comp === selectedCompany"
+            class="search-result">
+          <td align="center" class="badge">{{comp.id}}</td>
+          <td align="center">{{comp.compName}}</td>
+          <td align="center"><p *ngIf="regularMode === true">{{comp.email}}</p><input type="email" *ngIf="selectedMode === true"
+                                                                                      [(ngModel)]="comp.email"
+                                                                                      placeholder="email"/></td>
+          <td align="center" *ngIf="selectedMode === true"><p *ngIf="regularMode === true">{{comp.password}}</p><input
+            *ngIf="selectedMode === true" [(ngModel)]="comp.password" placeholder="password"/></td>
+          <td *ngIf="regularMode === true" align="center" class="update-button">Update</td>
+          <td *ngIf="selectedMode === true" align="center" class="update-button" (click)="updateCompany(comp, $event)">
+            Update
+          </td>
+          <td align="center" class="delete-button" (click)="deleteCompany(comp, $event)">Delete</td>
+      </table>
+    </div>
+  </div>
+
+
+  <h4>All Companies</h4>
+
+  <table width="470px" class="companies">
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th *ngIf="selectedMode === true">PASSWORD</th>
+    </tr>
+
+    <tr *ngFor="let company of companies" (click)="onSelect(company)" [class.selected]="company === selectedCompany">
+      <td align="center" class="badge">{{company.id}}</td>
+      <td align="center">{{company.compName}}</td>
+      <td align="center"><p *ngIf="company.edit !== true">{{company.email}}</p><input type="email" *ngIf="company.edit === true"
+                                                                                     [(ngModel)]="company.email"
+                                                                                     placeholder="email"/></td>
+      <td align="center" *ngIf="company.edit === true"><input
+        *ngIf="company.edit === true" [(ngModel)]="company.password" placeholder="password"/></td>
+      <td *ngIf="company.edit !== true" align="center" class="update-button">Update</td>
+      <td *ngIf="company.edit === true" align="center" class="update-button" (click)="updateCompany(company, $event)">
+        Update
+      </td>
+      <td align="center" class="delete-button" (click)="deleteCompany(company, $event)">Delete</td>
+    </tr>
+  </table>
+
+  <!-- </div>
+
+  <div *ngIf="selectedCompany">
+    <h2>
+      {{selectedCompany.compName | uppercase}} is my Company
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+
+  -->
+
+  <div class="error" *ngIf="error"> {{error}}</div>
+</a>
+

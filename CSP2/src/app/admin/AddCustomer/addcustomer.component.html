@@ -1,0 +1,81 @@
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Customers</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          ID :
+        </div>
+        <div class="col-lg-6">
+          <input type="number" placeholder="Enter ID" [(ngModel)]="newCustomer.id" class="form-control">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+          Name :
+        </div>
+        <div class="col-lg-6">
+          <input [(ngModel)]="newCustomer.custName" placeholder="Enter name" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Password :
+        </div>
+        <div class="col-lg-6 controls">
+          <input type="password" [(ngModel)]="newCustomer.password" placeholder="Enter Password" class="form-control">
+        </div>
+        <label class="control-label"></label>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-success" (click)="addCustomer($event)">Add Customer</button>
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th align="center">ID</th>
+          <th align="center">Name</th>
+          <th align="center" *ngIf="selectedModeCust === true">PASSWORD</th>
+        </tr>
+
+        <tr *ngFor="let customer of customers" (click)="onSelectCust(customer)"
+            [class.selected]="customer === selectedCustomer">
+          <td align="center" class="badge">{{customer.id}}</td>
+          <td align="center">{{customer.custName}}</td>
+          <td align="center" *ngIf="customer.edit === true"><input
+            *ngIf="customer.edit === true" [(ngModel)]="customer.password" placeholder="password"/></td>
+          <td *ngIf="customer.edit !== true" align="center" class="btn btn-success">Update</td>
+          <td *ngIf="customer.edit === true" align="center" class="btn btn-success"
+              (click)="updateCustomer(customer, $event)">
+            Update
+          </td>
+          <td align="center" class="btn btn-danger" (click)="deleteCustomer(customer, $event)">Delete</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!--<div class="error" *ngIf="error"> {{error}}</div>-->
+<script type="text/javascript" src="../../lib/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="../../lib/bootstrap.js"></script>

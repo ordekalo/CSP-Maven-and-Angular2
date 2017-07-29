@@ -1,0 +1,42 @@
+<h2 style="text-align: left">Delete Coupon :</h2>
+<a style="float: left" href="#/home">Home</a><Br>
+<hr class="style17">
+<p style="text-align: left">Click 'DELETE' To Delete A Coupon !</p>
+
+<table width="800px">
+    <caption>Table 2.2 All Company Coupons For Delete</caption>
+    <tr background-color="#757575">
+        <th ng-click="d.setOrder('id')">ID</th>
+        <th>TITLE</th>
+        <th>START DATE</th>
+        <th>END DATE</th>
+        <th>AMOUNT</th>
+        <th ng-click="d.setOrder('type')">TYPE</th>
+        <th ng-click="d.setOrder('price')">PRICE</th>
+        <th>MESSAGE</th>
+        <th>IMAGE</th>
+        <th>DELETE</th>
+    </tr>
+
+    <tr ng-repeat="c in d.coupons | orderBy : d.orderB : d.goUp">
+        <td>{{c.id}}</td>
+        <td>{{c.title}}</td>
+        <td>{{c.startDate}}</td>
+        <td>{{c.endDate}}</td>
+        <td>{{c.amount}}</td>
+        <td>{{c.type}}</td>
+        <td>{{c.price}}</td>
+        <td>{{c.message}}</td>
+        <td>{{c.image}}</td>
+        <td>
+            <button class="w3-btn w3-white w3-border w3-round-large" ng-click="d.deleteCoupon(c)">DELETE</button>
+        </td>
+    </tr>
+</table>
+<br><br>
+<div style="text-align: left">
+    <b>TIP</b>: you can arrange the table in ascending and descending order by:<b> ID</b>, <b>TYPE</b>, and<b> PRICE</b>,
+    by clicking the column header
+</div> <br>
+<p style="text-align: left"><b>Note!</b><br> Before you delete a coupon from your lists, please note: once you delete a
+    coupon, it can not be restored.</p>

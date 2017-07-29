@@ -1,0 +1,173 @@
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Coupons</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          ID :
+        </div>
+        <div class="col-lg-6">
+          <input type="number" placeholder="Enter ID" [(ngModel)]="newCoupon.id" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Title :
+        </div>
+        <div class="col-lg-6">
+          <input [(ngModel)]="newCoupon.title" placeholder="Enter name" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Start Date :
+        </div>
+        <div class="col-lg-6">
+          <input type="date" [(ngModel)]="newCoupon.startDate" placeholder="Enter Date" class="form-control">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+          End Date :
+        </div>
+        <div class="col-lg-6">
+          <input type="date" [(ngModel)]="newCoupon.endDate" placeholder="Enter Date" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-2">
+            Amount :
+          </div>
+          <div class="col-lg-6">
+            <input type="number" placeholder="Enter Amount" [(ngModel)]="newCoupon.amount" class="form-control">
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-2">
+            Type :
+          </div>
+          <div class="col-lg-6">
+            <label>
+              <select [(ngModel)]="newCoupon.type" placeholder="Select Type" class="form-control">
+                <option value="RESTURANTS">RESTURANTS</option>
+                <option value="ELECTRICITY">ELECTRICITY</option>
+                <option value="FOOD">FOOD</option>
+                <option value="HEALTH">HEALTH</option>
+                <option value="SPORTS">SPORTS</option>
+                <option value="CAMPING">CAMPING</option>
+                <option value="TRAVELLING">TRAVELLING</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-2">
+            Message :
+          </div>
+          <div class="col-lg-6">
+            <input [(ngModel)]="newCoupon.message" placeholder="Enter Message" class="form-control">
+          </div>
+        </div>
+        <br>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-2">
+              Price :
+            </div>
+            <div class="col-lg-6">
+              <input type="number" placeholder="Enter Price" [(ngModel)]="newCoupon.price" class="form-control">
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-lg-2">
+              Image :
+            </div>
+            <div class="col-lg-6 controls">
+              <input [(ngModel)]="newCoupon.image" placeholder="Enter Image" class="form-control">
+            </div>
+            <label class="control-label"></label>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-lg-8">
+
+            </div>
+
+            <div class="col-lg-2">
+              <button class="btn btn-success" (click)="addCoupon($event)">Add Coupon</button>
+            </div>
+
+            <div class="col-lg-2">
+              <button class="btn btn-danger" (click)="logout()">Logout</button>
+            </div>
+          </div>
+          <br>
+          <table class="table table-bordered">
+            <tr>
+              <th align="center">ID</th>
+              <th align="center">Title</th>
+              <th align="center">Start Date</th>
+              <th align="center">End Date</th>
+              <th align="center">Amount</th>
+              <th align="center">Type</th>
+              <th align="center">Message</th>
+              <th align="center">Price</th>
+              <th align="center">Image</th>
+            </tr>
+
+            <tr *ngFor="let coup of coupons" (click)="onSelect(coup)"
+                [class.selected]="coup === selectedCoupon"
+                class="search-result">
+              <td align="center" class="badge">{{coup.id}}</td>
+              <td align="center">{{coup.title}}</td>
+              <td align="center">{{coup.startDate}}</td>
+              <td align="center"><p *ngIf="regularMode === true">{{coup.endDate}}</p><input type="date"
+                                                                                            *ngIf="selectedMode === true"
+                                                                                            [(ngModel)]="coup.endDate"
+                                                                                            placeholder="End Date"/>
+              </td>
+              <td align="center">{{coup.amount}}</td>
+              <td align="center">{{coup.type}}</td>
+              <td align="center">{{coup.message}}</td>
+              <td align="center"><p *ngIf="regularMode === true">{{coup.price}}</p><input type="number" min="1"
+                                                                                          max="9999"
+                                                                                          *ngIf="selectedMode === true"
+                                                                                          [(ngModel)]="coup.price"
+                                                                                          placeholder="Price"/></td>
+              <td align="center">{{coup.image}}</td>
+              <td *ngIf="coup.edit !== true" align="center" class="btn btn-success">Update</td>
+              <td *ngIf="coup.edit === true" align="center" class="btn btn-success"
+                  (click)="updateCoupon(coup, $event)">
+                Update
+              </td>
+              <td align="center" class="btn btn-danger" (click)="deleteCoupon(coup, $event)">Delete</td>
+            </tr>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <!--<div class="error" *ngIf="error"> {{error}}</div>-->
+  </div>
+</div>

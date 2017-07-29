@@ -1,0 +1,23 @@
+<h2 style="text-align: left">Company Details</h2>
+<a style="float: left" href="#/home">Home</a><Br>
+<hr class="style17">
+<p style="text-align: left">View The Company Information</p>
+
+
+<br><br>
+<table width="470px">
+    <tr1 background-color="#757575">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>PASSWORD</th>
+    </tr1>
+
+    <tr ng-repeat="c in gc.companies">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.password}}</td>
+    </tr>
+</table>		
+

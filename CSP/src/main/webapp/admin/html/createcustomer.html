@@ -1,0 +1,41 @@
+<h2 style="text-align: left">Create A New Customer</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Please insert the customer details :</p>
+<div>
+
+    <div id="banner">
+        <b>RESTTICTION:</b> <br> <br>The customer name must be unique
+        !<br> It is not possible to name a customer for several customers
+        together!
+    </div>
+    <table class="mytable" style="text-align: left">
+        <tr>
+            <td><input class="w3-input w3-border w3-round-large" type="text"
+                       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                       ng-model="ccu.newCustomer.id" placeholder="ID" required/></td>
+            <td><input class="w3-input w3-border w3-round-large" type="text"
+                       ng-model="ccu.newCustomer.custName" placeholder="NAME" required/></td>
+            <td><input class="w3-input w3-border w3-round-large"
+                       type="password" ng-model="ccu.newCustomer.password"
+                       placeholder="PASSWORD" required/></td>
+        </tr>
+        <tr></tr>
+    </table>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <button class="w3-btn w3-white w3-border w3-round-large"
+                        style="float: right" ng-click="ccu.createCustomer()">Create
+                    new Customer
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <p ng-show="ccu.success" style="color: lime; margin-left: 2%">Congratulations
+        ! A new customer was successfully created...!</p>
+    <p ng-show="ccu.failure" style="color: red; margin-left: 2%">Oops...!
+        something went wrong, please try again...</p>

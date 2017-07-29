@@ -1,0 +1,77 @@
+
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search Company</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          By ID :
+        </div>
+        <div class="col-lg-6">
+          <input #searchCompBox1 id="search-box1-Comp" (keyup)="searchCompByID(searchCompBox1.value)"
+                 placeholder="Search By ID" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          By Name :
+        </div>
+        <div class="col-lg-6">
+          <input #searchCompBox id="search-box-Comp" (keyup)="searchCompByName(searchCompBox.value)"
+                 placeholder="Search By Name" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-success">Search</button>
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th align="center" *ngIf="searchCompBox.value || searchCompBox1.value">ID</th>
+          <th align="center" *ngIf="searchCompBox.value || searchCompBox1.value">Name</th>
+          <th align="center" *ngIf="searchCompBox.value || searchCompBox1.value">Email</th>          <th align="center" *ngIf="searchCompBox.value || searchCompBox1.value">PASSWORD</th>
+          <!--*ngIf="selectedModeComp === true"-->
+        </tr>
+
+        <tr *ngFor="let comp of searchCompanies || companyByID" (click)="onSelectComp(comp)"
+            [class.selected]="comp === selectedCompany">
+          <td align="center" class="badge">{{comp.id}}</td>
+          <td align="center">{{comp.compName}}</td>
+          <td align="center"><p *ngIf="comp.edit !== true">{{comp.email}}</p><input type="email"
+                                                                                    *ngIf="comp.edit === true"
+                                                                                    [(ngModel)]="comp.email"
+                                                                                    placeholder="email"/></td>
+          <td align="center" *ngIf="comp.edit === true"><input
+            *ngIf="comp.edit === true" [(ngModel)]="comp.password" placeholder="password"/></td>
+          <td *ngIf="comp.edit !== true" align="center" class="btn btn-success">Update</td>
+          <td *ngIf="comp.edit === true" align="center" class="btn btn-success"
+              (click)="updateCompany(comp, $event)">
+            Update
+          </td>
+          <td align="center" class="btn btn-danger" (click)="deleteCompany(comp, $event)">Delete</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!--<div class="error" *ngIf="error"> {{error}}</div>-->

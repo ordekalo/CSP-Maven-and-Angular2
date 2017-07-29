@@ -1,0 +1,65 @@
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Purchase Coupon</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          By ID :
+        </div>
+        <div class="col-lg-6">
+          <input #purchaseBox id="purchase-box" type="number" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-success" (click)="purchaseCoupon(purchaseBox.value, $event)">Purchase Coupon</button>
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th align="center">ID</th>
+          <th align="center">TITLE</th>
+          <th align="center">START DATE</th>
+          <th align="center">END DATE</th>
+          <th align="center">AMOUNT</th>
+          <th align="center">TYPE</th>
+          <th align="center">MESSAGE</th>
+          <th align="center">PRICE</th>
+          <th align="center">IMAGE</th>
+        </tr>
+
+        <tr *ngFor="let coup of coupons" (click)="onSelect(coup)"
+            [class.selected]="coup === selectedCoupon"
+            class="search-result">
+          <td align="center" class="badge">{{coup.id}}</td>
+          <td align="center">{{coup.title}}</td>
+          <td align="center">{{coup.startDate}}</td>
+          <td align="center">{{coup.endDate}}</td>
+          <td align="center">{{coup.amount}}</td>
+          <td align="center">{{coup.type}}</td>
+          <td align="center">{{coup.message}}</td>
+          <td align="center">{{coup.price}}</td>
+          <td align="center">{{coup.image}}</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!--<div class="error" *ngIf="error"> {{error}}</div>-->

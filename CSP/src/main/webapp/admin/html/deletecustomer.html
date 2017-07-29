@@ -1,0 +1,30 @@
+<h2 style="text-align: left">Delete CUstomer :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Click 'DELETE' To Delete A Customer !<p>
+    <br>
+<table width="230px">
+    <caption>Table 3.5 All Customer For Delete</caption>
+    <tr background-color="#757575">
+        <th ng-click="dcu.setOrder('id')">ID</th>
+        <th ng-click="dcu.setOrder('name')">NAME</th>
+    </tr>
+
+    <tr ng-repeat="c in dcu.customers | orderBy : dcu.orderB : dcu.goUp">
+        <td>{{c.id}}</td>
+        <td>{{c.custName}}</td>
+        <td>{{c.password}}</td>
+        <td>
+            <button class="w3-btn w3-white w3-border w3-round-large" ng-click="dcu.deleteCustomer(c)">DELETE</button>
+        </td>
+    </tr>
+</table>
+<br><br>
+<div style="text-align: left"><b>Note!</b><br> Before you delete a coupon from your lists, please note: once you delete
+    a coupon, it can not be restored.
+</div>
+<br>
+<div style="text-align: left">
+    <b>TIP</b>: you can arrange the table in ascending and descending order by:<b> ID</b> and<b> NAME</b>,
+    by clicking the column header
+</div>

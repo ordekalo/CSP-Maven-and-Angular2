@@ -1,0 +1,34 @@
+<h2 style="text-align: left">Search Company by ID :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Please enter the Company ID to search
+    for :</p>
+
+<table class="mytable" style="text-align: left">
+    <td><input class="w3-input w3-border w3-round-large" type="text"
+               ng-model="gco.id" placeholder="Company ID" required
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'></td>
+    <td>
+        <button class="w3-btn w3-white w3-border w3-round-large" style="float: right"
+                ng-click="gco.getId()">Get Company
+        </button>
+    </td>
+</table>
+
+<br>
+<br>
+<table width="470px">
+    <caption>Table 3.2 Company By ID</caption>
+
+    <tr background-color="#757575">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+    </tr>
+
+    <tr>
+        <td>{{gco.company.id}}</td>
+        <td>{{gco.company.compName}}</td>
+        <td>{{gco.company.email}}</td>
+    </tr>
+</table>

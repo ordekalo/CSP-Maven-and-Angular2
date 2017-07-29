@@ -1,0 +1,32 @@
+<h2 style="text-align: left">Search Customer by ID :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Please enter the Customer ID to search
+    for :</p>
+
+<table class="mytable" style="text-align: left">
+    <td><input class="w3-input w3-border w3-round-large" type="text"
+               ng-model="gcu.id" placeholder="Customer ID"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+               required></td>
+    <td>
+        <button class="w3-btn w3-white w3-border w3-round-large" style="float: right"
+                ng-click="gcu.getId()">Get Customer
+        </button>
+    </td>
+</table>
+
+<br>
+<br>
+<table width="270px">
+    <caption>Table 3.6 Customer By ID</caption>
+    <tr background-color="#757575">
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+
+    <tr>
+        <td>{{gcu.customer.id}}</td>
+        <td>{{gcu.customer.custName}}</td>
+    </tr>
+</table>

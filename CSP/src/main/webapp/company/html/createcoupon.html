@@ -1,0 +1,70 @@
+<h2 style="text-align: left">Create A New Coupon</h2>
+<a style="float: left" href="#/home">Home</a><Br>
+<hr class="style17">
+
+<p style="text-align: left">Please insert the coupon id you are
+    interested in:</p>
+
+<ul width="800px">
+
+
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+               ng-model="c.newCoupon.id" placeholder="ID" required/></il>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               ng-model="c.newCoupon.title" placeholder="TITLE" required/></il>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="date"
+               ng-model="c.newCoupon.startDate" placeholder="START DATE"
+               style="width: 80%" required/></il>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="date"
+               ng-model="c.newCoupon.endDate" placeholder="END DATE"
+               style="width: 80%" required/></il>
+</ul>
+<ul>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+               ng-model="c.newCoupon.amount" placeholder="AMOUNT" required/></il>
+    <il>
+        <select class="w3-input w3-border w3-round-large" type="text"
+                ng-model="c.newCoupon.type" style="width: 80%" required/>
+        <option>RESTURANT</option>
+        <option>ELECRICITY</option>
+        <option>FOOD</option>
+        <option>HEALTH</option>
+        <option>SPORTS</option>
+        <option>CAMPING</option>
+        <option>TRAVELING</option>
+        </select></il>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               ng-model="c.newCoupon.message" placeholder="MESSAGE" required/></il>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+               ng-model="c.newCoupon.price" placeholder="PRICE" required/></il>
+</ul>
+<ul>
+    <il>
+        <input class="w3-input w3-border w3-round-large" type="text"
+               ng-model="c.newCoupon.image" placeholder="IMAGE" required required/></il>
+</ul>
+
+
+<button class="w3-btn w3-white w3-border w3-round-large"
+        style="float: right" ng-click="c.createCoupon()">Create Coupon
+</button>
+
+<p ng-show="c.success" style="color: lime; margin-left: 2%">Congratulations,
+    the coupon was successfully create...!</p>
+<p ng-show="c.failure" style="color: red; margin-left: 2%">Oops !
+    something went wrong, please try again...</p>
+<div style="text-align: left; margin-top: 150px">
+    <b>DO YOU KNOW?</b><br>The coupon management system allow
+    companies to create a coupons as part of their Advertising campaigns
+</div>
+<br>

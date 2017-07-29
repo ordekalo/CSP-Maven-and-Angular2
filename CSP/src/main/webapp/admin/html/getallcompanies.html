@@ -1,0 +1,28 @@
+<div id="banner" style="font-size: 22px"><b>INFO :</b>
+    <p style="font-size: 18px">Total companies in the system:</p>
+    <p style="font-size: 50px; text-align: center"> {{gaco.companies.length}}</p></div>
+
+<h2 style="text-align: left">All Companies :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<table width="470px">
+    <caption>Table 3.3 All Companies Table</caption>
+    <tr background-color="#757575">
+        <th ng-click="gaco.setOrder('id')">ID</th>
+        <th ng-click="gaco.setOrder('name')">NAME</th>
+        <th>PASSWORD</th>
+        <th>EMAIL</th>
+    </tr>
+
+    <tr ng-repeat="c in gaco.companies | orderBy : gaco.orderB : gaco.goUp">
+        <td>{{c.id}}</td>
+        <td>{{c.compName}}</td>
+        <td>{{c.password}}</td>
+        <td>{{c.email}}</td>
+    </tr>
+</table>
+<br><br>
+<div style="text-align: left">
+    <b>TIP</b>: you can arrange the table in ascending and descending order by:<b> ID</b> and<b> NAME</b>,
+    by clicking the column header
+</div>

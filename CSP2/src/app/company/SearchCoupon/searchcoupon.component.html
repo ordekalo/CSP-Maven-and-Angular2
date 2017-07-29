@@ -1,0 +1,151 @@
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search Company</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          By ID :
+        </div>
+        <div class="col-lg-6">
+          <input type="number" #searchID id="search-id" (keyup)="searchByID(searchID.value)"
+                 placeholder="Search By ID" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          By Title :
+        </div>
+        <div class="col-lg-6">
+          <input #searchTitle id="search-Title" (keyup)="searchByTitle(searchTitle.value)"
+                 placeholder="Search By Title" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          By Price :
+        </div>
+        <div class="col-lg-6">
+          <input type="number" #searchPrice id="search-price" (keyup)="searchByPrice(searchPrice.value)"
+                 placeholder="Search By Price" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          By Date :
+        </div>
+        <div class="col-lg-6">
+          <input #searchDate id="search-date" type="date" (change)="searchByDate(searchDate.value)"
+                 placeholder="Search By Date" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Type :
+        </div>
+        <div class="col-lg-6">
+          <label>
+            <select #searchType id="search-type" (change)="searchByType(searchType.value)" placeholder="Search By Type"
+                    class="form-control">
+              <option value="">Search By Type</option>
+              <option value="RESTURANTS">RESTURANTS</option>
+              <option value="ELECTRICITY">ELECTRICITY</option>
+              <option value="FOOD">FOOD</option>
+              <option value="HEALTH">HEALTH</option>
+              <option value="SPORTS">SPORTS</option>
+              <option value="CAMPING">CAMPING</option>
+              <option value="TRAVELLING">TRAVELLING</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-success">Search</button>
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            ID
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            TITLE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            START DATE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            END DATE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            AMOUNT
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            TYPE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            MESSAGE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            PRICE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            IMAGE
+          </th>
+        </tr>
+
+        <tr *ngFor="let coup of searchCoupons" (click)="onSelect(coup)"
+            [class.selected]="coup === selectedCoupon"
+            class="search-result">
+          <td align="center" class="badge">{{coup.id}}</td>
+          <td align="center">{{coup.title}}</td>
+          <td align="center">{{coup.startDate}}</td>
+          <td align="center"><p *ngIf="regularMode === true">{{coup.endDate}}</p><input type="date"
+                                                                                        *ngIf="selectedMode === true"
+                                                                                        [(ngModel)]="coup.endDate"
+                                                                                        placeholder="End Date"/></td>
+          <td align="center">{{coup.amount}}</td>
+          <td align="center">{{coup.type}}</td>
+          <td align="center">{{coup.message}}</td>
+          <td align="center"><p *ngIf="regularMode === true">{{coup.price}}</p><input type="number" min="1" max="9999"
+                                                                                      *ngIf="selectedMode === true"
+                                                                                      [(ngModel)]="coup.price"
+                                                                                      placeholder="Price"/></td>
+          <td align="center">{{coup.image}}</td>
+          <td *ngIf="coup.edit !== true" align="center" class="btn btn-success">Update</td>
+          <td *ngIf="coup.edit === true" align="center" class="btn btn-success"
+              (click)="updateCoupon(coup, $event)">
+            Update
+          </td>
+          <td align="center" class="btn btn-danger" (click)="deleteCoupon(coup, $event)">Delete</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!--<div class="error" *ngIf="error"> {{error}}</div>-->

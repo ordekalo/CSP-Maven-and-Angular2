@@ -1,0 +1,37 @@
+<h2 style="text-align: left">Delete Comoany :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Click 'DELETE' To Delete A Company !<p>
+    <br>
+
+
+<table width="470px">
+    <caption>Table 3.1 All Comoany For Delete</caption>
+    <tr background-color="#757575">
+        <th ng-click="dco.setOrder('id')">ID</th>
+        <th ng-click="dco.setOrder('name')">NAME</th>
+        <th>PASSWORD</th>
+        <th>EMAIL</th>
+        <th>DELETE</th>
+    </tr>
+
+
+    <tr ng-repeat="c in dco.companies | orderBy : dco.orderB : dco.goUp">
+        <td>{{c.id}}</td>
+        <td>{{c.compName}}</td>
+        <td>{{c.password}}</td>
+        <td>{{c.email}}</td>
+        <td>
+            <button class="w3-btn w3-white w3-border w3-round-large" ng-click="dco.deleteCompany(c)">DELETE</button>
+        </td>
+    </tr>
+</table>
+<br><br>
+<div style="text-align: left"><b>Note!</b><br> Before you delete a Company from your lists, please note: once you delete
+    a Company, it can not be restored.
+</div>
+<br>
+<div style="text-align: left">
+    <b>TIP</b>: you can arrange the table in ascending and descending order by:<b> ID</b> and<b> NAME</b>,
+    by clicking the column header
+</div>

@@ -1,0 +1,120 @@
+<a>
+  <button (click)="logout()">Logout</button>
+  <h4>Purchase New Coupon By ID</h4>
+  <table width="470px" class="coupons">
+    <tr>
+      <th>ID</th>
+    </tr>
+    <tr>
+      <td align="center"><input align="center" #purchaseBox id="purchase-box" type="number" min="1" max="9999999999"
+                                title="Purchase"></td>
+      <td align="center" class="delete-button" (click)="purchaseCoupon(purchaseBox.value, $event)">Purchase</td>
+    </tr>
+  </table>
+
+  <div id="search-component">
+    <h4>Search Coupon</h4>
+    <input align="center" #searchTitle id="search-Title" (keyup)="searchByTitle(searchTitle.value)" size="12"
+           placeholder="Search By Name"/>
+    <input align="center" #searchID id="search-id" type="number" min="1" max="9999999"
+           (keyup)="searchByID(searchID.value)"
+           placeholder="Search By ID"/>
+    <select align="center" #searchType id="search-type" (change)="searchByType(searchType.value)"
+            placeholder="Search By Type">
+      <option value="">Search By Type</option>
+      <option value="RESTURANTS">RESTURANTS</option>
+      <option value="ELECTRICITY">ELECTRICITY</option>
+      <option value="FOOD">FOOD</option>
+      <option value="HEALTH">HEALTH</option>
+      <option value="SPORTS">SPORTS</option>
+      <option value="CAMPING">CAMPING</option>
+      <option value="TRAVELLING">TRAVELLING</option>
+    </select>
+    <input align="center" #searchPrice id="search-price" type="number" min="1" max="9999999999"
+           (keyup)="searchByPrice(searchPrice.value)"
+           placeholder="Search By Price"/>
+    <input align="center" #searchDate id="search-date" type="date" (change)="searchByDate(searchDate.value)"
+           placeholder="Search By Date"/>
+    <div>
+      <table width="470px" class="coupons">
+        <tr>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            ID
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            TITLE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            START DATE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            END DATE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            AMOUNT
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            TYPE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            MESSAGE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            PRICE
+          </th>
+          <th *ngIf="searchTitle.value || searchID.value || searchType.value || searchPrice.value || searchDate.value">
+            IMAGE
+          </th>
+        </tr>
+
+        <tr *ngFor="let coupon of searchCoupons" (click)="onSelect(coupon)"
+            [class.selected]="coupon === selectedCoupon"
+            class="search-result">
+          <td align="center" class="badge">{{coupon.id}}</td>
+          <td align="center">{{coupon.title}}</td>
+          <td align="center">{{coupon.startDate}}</td>
+          <td align="center">{{coupon.endDate}}</td>
+          <td align="center">{{coupon.amount}}</td>
+          <td align="center">{{coupon.type}}</td>
+          <td align="center">{{coupon.message}}</td>
+          <td align="center">{{coupon.price}}</td>
+          <td align="center">{{coupon.image}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <h4>All Coupons</h4>
+
+  <table class="coupons">
+    <tr>
+      <th>ID</th>
+      <th>TITLE</th>
+      <th>START DATE</th>
+      <th>END DATE</th>
+      <th>AMOUNT</th>
+      <th>TYPE</th>
+      <th>MESSAGE</th>
+      <th>PRICE</th>
+      <th>IMAGE</th>
+    </tr>
+
+    <tr *ngFor="let coup of coupons" (click)="onSelect(coup)"
+        [class.selected]="coup === selectedCoupon"
+        class="search-result">
+      <td align="center" class="badge">{{coup.id}}</td>
+      <td align="center">{{coup.title}}</td>
+      <td align="center">{{coup.startDate}}</td>
+      <td align="center">{{coup.endDate}}</td>
+      <td align="center">{{coup.amount}}</td>
+      <td align="center">{{coup.type}}</td>
+      <td align="center">{{coup.message}}</td>
+      <td align="center">{{coup.price}}</td>
+      <td align="center">{{coup.image}}</td>
+    </tr>
+  </table>
+
+  <div class="error" *ngIf="error"> {{error}}</div>
+</a>
+

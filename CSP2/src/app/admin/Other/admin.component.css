@@ -1,0 +1,183 @@
+.selected {
+  background-color: #CFD8DC !important;
+  background-color: rgb(205, 202, 209);
+  color: blue;
+}
+
+.companies {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 25em;
+}
+
+.companies .badge .text {
+  position: relative;
+}
+
+.companies .comp-name {
+  position: fixed;
+  text-orientation: mixed;
+  height: 20px;
+}
+
+.companies td {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .5em;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.companies td:hover {
+  color: #607D8B;
+  color: rgb(0, 120, 215);
+  background-color: #DDD;
+  left: .1em;
+}
+
+.companies td.selected:hover {
+  /*background-color: #BBD8DC !important;*/
+  color: #039be5;
+}
+
+.companies .text {
+  position: relative;
+  top: -3px;
+}
+
+.companies .badge {
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  background-color: rgb(0, 120, 215);
+  line-height: 1em;
+  position: relative;
+  border-radius: 8px 0 0 8px;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+.error {
+  color: red;
+}
+
+.companies .update-button {
+  background-color: limegreen;
+  color: white;
+  margin: .5em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  padding: 5px 10px;
+}
+
+.companies .delete-button {
+  background-color: rgb(216, 59, 1);
+  background-color: rgb(216, 59, 2);
+  color: white;
+  margin: .5em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  padding: 5px 10px;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  background-color: rgb(205, 202, 209);
+  color: blue;
+}
+
+.customers {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 25em;
+}
+
+.customers .badge .text {
+  position: relative;
+}
+
+.customers .comp-name {
+  position: fixed;
+  text-orientation: mixed;
+  height: 20px;
+}
+
+.customers td {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .5em;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.customers td:hover {
+  color: #607D8B;
+  color: rgb(0, 120, 215);
+  background-color: #DDD;
+  left: .1em;
+}
+
+.customers td.selected:hover {
+  /*background-color: #BBD8DC !important;*/
+  color: #039be5;
+}
+
+.customers .text {
+  position: relative;
+  top: -3px;
+}
+
+.customers .badge {
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  background-color: rgb(0, 120, 215);
+  line-height: 1em;
+  position: relative;
+  border-radius: 8px 0 0 8px;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+.error {
+  color: red;
+}
+
+.customers .update-button {
+  background-color: limegreen;
+  color: white;
+  margin: .5em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  padding: 5px 10px;
+}
+
+.customers .delete-button {
+  background-color: rgb(216, 59, 1);
+  background-color: rgb(216, 59, 2);
+  color: white;
+  margin: .5em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  padding: 5px 10px;
+}

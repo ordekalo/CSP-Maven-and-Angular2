@@ -1,0 +1,43 @@
+<h2 style="text-align: left">Create A New Company</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Please insert the company details :</p>
+<div>
+    <div id="banner">
+        <b>RESTTICTION:</b><br> <br>The company name must be unique
+        to each company. It is not possible to name a company for several
+        companies together
+    </div>
+    <table class="mytable" style="text-align: left">
+        <tr>
+            <td><input class="w3-input w3-border w3-round-large" type="text"
+                       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                       ng-model="cco.newCompany.id" placeholder="ID"
+                       required/></td>
+            <td><input class="w3-input w3-border w3-round-large" type="text"
+                       ng-model="cco.newCompany.compName" placeholder="NAME"
+                       required/></td>
+            <td><input class="w3-input w3-border w3-round-large" type="password"
+                       ng-model="cco.newCompany.password" placeholder="PASSWORD"
+                       required/></td>
+            <td><input class="w3-input w3-border w3-round-large" type="email"
+                       ng-model="cco.newCompany.email" placeholder="E-MAIL"
+                       required/></td>
+        </tr>
+    </table>
+    <br><br>
+    <table>
+        <tr>
+            <td>
+                <button class="w3-btn w3-white w3-border w3-round-large" style="float: left"
+                        ng-click="cco.createCompany()">Create new Company
+                </button>
+            </td>
+        </tr>
+    </table>
+
+
+    <p ng-show="cco.success" style="color: lime; margin-left: 2%">Congratulations,
+        Company was successfully created...!</p>
+    <p ng-show="cco.failure" style="color: red; margin-left: 2%">Oops !
+        something went wrong, please try again...</p>

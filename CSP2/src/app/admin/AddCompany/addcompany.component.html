@@ -1,0 +1,97 @@
+
+<div class="row" style="padding-left: 300px;padding-right: 300px;">
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Companies</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2">
+          ID :
+        </div>
+        <div class="col-lg-6">
+          <input type="number" placeholder="Enter ID" [(ngModel)]="newCompany.id" class="form-control">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+          Name :
+        </div>
+        <div class="col-lg-6">
+          <input [(ngModel)]="newCompany.compName" placeholder="Enter name" class="form-control">
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Email :
+        </div>
+        <div class="col-lg-6 controls">
+          <input [(ngModel)]="newCompany.email" placeholder="Enter Email" class="form-control">
+        </div>
+        <label class="control-label"></label>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-2">
+          Password :
+        </div>
+        <div class="col-lg-6 controls">
+          <input type="password" [(ngModel)]="newCompany.password" placeholder="Enter Password" class="form-control">
+        </div>
+        <label class="control-label"></label>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-success" (click)="addCompany($event)">Add Company</button>
+        </div>
+
+        <div class="col-lg-2">
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th align="center">ID</th>
+          <th align="center">Name</th>
+          <th align="center">Email</th>
+          <th align="center" *ngIf="selectedModeComp === true">PASSWORD</th>
+        </tr>
+
+        <tr *ngFor="let company of companies" (click)="onSelectComp(company)"
+            [class.selected]="company === selectedCompany">
+          <td align="center" class="badge">{{company.id}}</td>
+          <td align="center">{{company.compName}}</td>
+          <td align="center"><p *ngIf="company.edit !== true">{{company.email}}</p><input type="email"
+                                                                                          *ngIf="company.edit === true"
+                                                                                          [(ngModel)]="company.email"
+                                                                                          placeholder="email"/></td>
+          <td align="center" *ngIf="company.edit === true"><input
+            *ngIf="company.edit === true" [(ngModel)]="company.password" placeholder="password"/></td>
+          <td *ngIf="company.edit !== true" align="center" class="btn btn-success">Update</td>
+          <td *ngIf="company.edit === true" align="center" class="btn btn-success"
+              (click)="updateCompany(company, $event)">
+            Update
+          </td>
+          <td align="center" class="btn btn-danger" (click)="deleteCompany(company, $event)">Delete</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!--<div class="error" *ngIf="error"> {{error}}</div>-->
+

@@ -1,0 +1,65 @@
+<h2 style="text-align: left">Update A Customer :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<table width="470px">
+    <tr>
+        <td>Please fill in your new password and name and click the Update button</td>
+    </tr>
+    <div id="banner">
+        <b>Note !</b> <br>
+        <br>The system allow you to update only customer NAME, and
+        PASSWORD !<br>Please fill out the empty blank and click Update to
+        update A specific customer.
+    </div>
+</table>
+
+<br>
+<table width="400px">
+    <caption>Table 3.4 All Customer For Update</caption>
+    <tr background-color="#757575">
+        <th ng-click="upcu.setOrder('id')">ID</th>
+        <th>NAME</th>
+        <th>PASSWORD</th>
+    </tr>
+
+    <tr ng-repeat="c in upcu.customers | orderBy : upcu.orderB : upcu.goUp">
+        <td>{{c.id}}</td>
+        <td ng-click="upcu.updateMode(c)"><p
+                ng-show="c.edit == undefined || c.edit == false">{{c.custName}}</p> <input
+                ng-show="c.edit ==true" class="w3-input w3-border w3-round-large"
+                type="text" ng-model="upcu.updatedCustomer.custName"
+                placeholder="{{c.custName}}" style="width: 100px"></td>
+        <td ng-click="upcu.updateMode(c)"><p
+                ng-show="c.edit == undefined || c.edit == false">{{c.password}}</p> <input
+                ng-show="c.edit ==true" class="w3-input w3-border w3-round-large"
+                type="ext" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                ng-model="upcu.updatedCustomer.passwors"
+                placeholder="{{c.password}}" style="width: 100px"></td>
+        <td ng-show="c.edit == true">
+            <button
+                    class="w3-btn w3-white w3-border w3-round-large"
+                    ng-click="upcu.updateCustomer()">UPDATE
+            </button>
+        </td>
+
+    </tr>
+</table>
+<div style="text-align: left">
+    <button class="w3-btn w3-white w3-border w3-round-large"
+            ng-click="upcu.closeUpdateMode(c)">Close Uodate Mode
+    </button>
+</div>
+
+<br>
+
+
+<br>
+<div>
+    <b>TIP</b>: you can arrange the table in ascending and descending order
+    by:<b> ID</b>,just click the column header
+</div>
+
+<p ng-show="upcu.success" style="color: lime; margin-left: 2%">The
+    customer was successfully update...!</p>
+<p ng-show="upcu.failure" style="color: red; margin-left: 2%">Oops !
+    something went wrong, please try again...</p>

@@ -1,0 +1,60 @@
+<h2>Get Your Coupon By Coupon TYPE</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<p style="text-align: left">Please Choose The Type Of The Coupon :</p>
+
+<table class="mytable">
+    <tr>
+        <td><select class="w3-input w3-border w3-round-large" type="text"
+                    ng-model="t.type" style="width: 100%" required/>
+            <option>RESTURANT</option>
+            <option>ELECRICITY</option>
+            <option>FOOD</option>
+            <option>HEALTH</option>
+            <option>SPORTS</option>
+            <option>CAMPING</option>
+            <option>TRAVELING</option>
+            </select></td>
+        <td>
+            <button class="w3-btn w3-white w3-border w3-round-large" style="float: right"
+                    ng-click="t.getType()">Get Coupons
+            </button>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<table width="800px">
+    <caption>Table 1.1 All Customer Purchased Coupons By Type</caption>
+
+    <tr>
+        <th ng-click="t.setOrder('type')">TYPE</th>
+        <th ng-click="t.setOrder('id')">ID</th>
+        <th>TITLE</th>
+        <th>START DATE</th>
+        <th>END DATE</th>
+        <th>AMOUNT</th>
+        <th ng-click="t.setOrder('price')">PRICE</th>
+        <th>MESSAGE</th>
+        <th>IMAGE</th>
+    </tr>
+
+    <tr ng-repeat="c in t.coupons | orderBy : t.orderB : t.goUp ">
+        <td>{{c.type}}</td>
+        <td>{{c.id}}</td>
+        <td>{{c.title}}</td>
+        <td>{{c.startDate}}</td>
+        <td>{{c.endDate}}</td>
+        <td>{{c.amount}}</td>
+        <td>{{c.price}}</td>
+        <td>{{c.message}}</td>
+        <td>{{c.image}}</td>
+    </tr>
+</table>
+<br>
+<br>
+<div style="text-align: left">
+    <b>TIP</b>: you can arrange the table in ascending and descending order
+    by:<b> ID</b>,and<b>PRICE</b>, by clicking the column header
+</div>

@@ -1,0 +1,65 @@
+<h2 style="text-align: left">Update A Company :</h2>
+<a style="float: left" href="#/home">Home</a><br>
+<hr class="style17">
+<table width="470px">
+    <tr>
+        <td>Please fill in your new password and name and click the
+            Update button
+        </td>
+    </tr>
+</table>
+
+<br>
+<div id="banner">
+    <b>Note !</b> <br>
+    <br>The system allow you to update only company ID, EMAIL and
+    PASSWORD !<br>Please fill out the blank space and click Update to
+    update A specific company.
+</div>
+<table width="470px">
+    <caption>Table 3.0 All Company For Update</caption>
+    <tr background-color="#757575">
+        <th>ID</th>
+        <th ng-click="upco.setOrder('name')">NAME</th>
+        <th>PASSWORD</th>
+        <th>EMAIL</th>
+    </tr>
+
+    <tr ng-repeat="c in upco.companies | orderBy : upco.orderB : upco.goUp">
+        <td>{{c.id}}</td>
+        <td>{{c.compName}}</td>
+        <td ng-click="upco.updateMode(c)"><p
+                ng-show="c.edit == undefined || c.edit == false">{{c.password}}</p> <input
+                ng-show="c.edit ==true" class="w3-input w3-border w3-round-large"
+                type="text" ng-model="upco.updatedCompany.password"
+                placeholder="{{c.password}}" style="width: 100px"></td>
+        <td><p
+                ng-show="c.edit == undefined || c.edit == false">{{c.email}}</p> <input
+                ng-show="c.edit ==true" class="w3-input w3-border w3-round-large"
+                type="text" ng-model="upco.updatedCompany.email"
+                placeholder="{{c.email}}" style="width: 100px"></td>
+        <td ng-show="c.edit == true">
+            <button
+                    class="w3-btn w3-white w3-border w3-round-large"
+                    ng-click="upco.updateCompany()">UPDATE
+            </button>
+        </td>
+    </tr>
+</table>
+<p>{{upco.updatedCompany |json}}
+<div style="text-align: left">
+    <button class="w3-btn w3-white w3-border w3-round-large"
+            ng-click="upco.closeUpdateMode(c)">Close Uodate Mode
+    </button>
+</div>
+<br>
+<br>
+<div>
+    <b>TIP</b>: you can arrange the table in ascending and descending order
+    by:<b> ID</b>,just click the column header
+</div>
+
+<p ng-show="upco.success" style="color: lime; margin-left: 2%">The
+    company was successfully update...!</p>
+<p ng-show="upco.failure" style="color: red; margin-left: 2%">Oops !
+    something went wrong, please try again...</p>
